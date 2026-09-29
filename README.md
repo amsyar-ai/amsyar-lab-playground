@@ -1,2 +1,2 @@
 # amsyar-lab-playground
-Just a small playground for to build and learn.
+Just a small playground for me to build and learn.
