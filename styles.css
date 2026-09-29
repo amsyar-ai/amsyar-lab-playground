@@ -1,0 +1,226 @@
+:root {
+  color-scheme: dark;
+  --background: #080b10;
+  --surface: #10151d;
+  --border: #252c37;
+  --text: #f4f7fb;
+  --muted: #98a2b3;
+  --accent: #74e0c1;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(116, 224, 193, 0.09), transparent 28rem),
+    radial-gradient(circle at 90% 65%, rgba(106, 146, 255, 0.07), transparent 28rem),
+    var(--background);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 88px 0 36px;
+}
+
+.hero {
+  max-width: 750px;
+  margin-bottom: 72px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--accent);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3.75rem, 9vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+.subtitle {
+  margin: 28px 0 0;
+  color: var(--accent);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.intro {
+  max-width: 590px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+  min-height: 290px;
+  padding: 30px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(18, 24, 33, 0.95), rgba(13, 17, 24, 0.95));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #3d4755;
+}
+
+.card::after {
+  position: absolute;
+  right: -50px;
+  bottom: -70px;
+  width: 170px;
+  height: 170px;
+  content: "";
+  border-radius: 50%;
+  background: var(--card-glow);
+  filter: blur(55px);
+  opacity: 0.18;
+}
+
+.card-build { --card-glow: #74e0c1; }
+.card-learn { --card-glow: #8ba8ff; }
+.card-experiment { --card-glow: #e59af0; }
+
+.icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 52px;
+  place-items: center;
+  color: var(--accent);
+  background: rgba(116, 224, 193, 0.08);
+  border: 1px solid rgba(116, 224, 193, 0.18);
+  border-radius: 12px;
+}
+
+.icon svg {
+  width: 24px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.number {
+  position: absolute;
+  top: 33px;
+  right: 30px;
+  margin: 0;
+  color: #596270;
+  font: 600 0.72rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
+}
+
+.card h2 {
+  margin: 0 0 13px;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.card > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 70px;
+  color: #6f7885;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-line {
+  width: 38px;
+  height: 1px;
+  background: #343b45;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 32px, 540px);
+    padding-top: 56px;
+  }
+
+  .hero {
+    margin-bottom: 48px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .icon {
+    margin-bottom: 36px;
+  }
+
+  footer {
+    margin-top: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
